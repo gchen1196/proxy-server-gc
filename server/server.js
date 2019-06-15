@@ -1,8 +1,9 @@
+require('newrelic');
 const express = require('express');
 const path = require('path');
 
 const app = express();
-const port = 1000;
+const port = 3000;
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/restaurants/:id', (req, res) => {
@@ -17,6 +18,22 @@ app.get('/api/restaurants/:id/photos', (req, res) => {
 app.get('/api/restaurants/:id/reviews', (req, res) => {
   const { id } = req.params;
   res.redirect(`http://localhost:3001/api/restaurants/${id}/reviews`);
+})
+
+app.get('/api/restaurants/:pricesearch&:location', (req, res) => {
+  const { pricesearch } = req.params;
+  const { location } = req.params;
+  res.redirect(`http://localhost:3001/api/restaurants/${pricesearch}&${location}`);
+})
+
+app.get('/api/restaurants/:name', (req, res) => {
+  const { name } = req.params;
+  res.redirect(`http://localhost:3001/api/restaurants/${name}`);
+})
+
+app.get('/api/restaurants/:location/location', (req, res) => {
+  const { location } = req.params;
+  res.redirect(`http://localhost:3001/api/restaurants/${location}/location`);
 })
 
 app.get('/api/restaurants/:id/info', (req, res) => {
