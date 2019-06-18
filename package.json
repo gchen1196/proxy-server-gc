@@ -22,6 +22,7 @@
   "homepage": "https://github.com/the-notorious-f-e-c/zagat-proxy-eugenia#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "http-proxy": "^1.17.0",
     "newrelic": "^5.10.0"
   },
   "devDependencies": {
